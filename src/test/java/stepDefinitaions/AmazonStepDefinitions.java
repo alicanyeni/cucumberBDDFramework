@@ -62,4 +62,14 @@ public class AmazonStepDefinitions {
     public void userTestsResultsInclude(String resultValue) {
         Assert.assertTrue(amazonPage.resultText.getText().contains(resultValue));
     }
+
+    @Then("kullanici {string} icin arama yapar")
+    public void kullaniciIcinAramaYapar(String arananKelime) {
+        amazonPage.searchBar.sendKeys(arananKelime, Keys.ENTER);
+    }
+
+    @Then("sonuclarin {string} icerdigini kontrol eder")
+    public void sonuclarinIcerdiginiKontrolEder(String dogrulananKelime) {
+        Assert.assertTrue(amazonPage.resultText.getText().contains(dogrulananKelime));
+    }
 }
