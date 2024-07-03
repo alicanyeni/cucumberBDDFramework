@@ -28,4 +28,14 @@ public class FacebookStepDefinition {
     public void user_closed_page() {
         Driver.quitDriver();
     }
+
+    @Given("kullanici {string} sayfasina gider")
+    public void kullaniciSayfasinaGider(String arananURL) {
+        Driver.getDriver().get(ConfigReader.getProperty(arananURL));
+    }
+
+    @When("Url in {string} oldugunu test eder")
+    public void urlInOldugunuTestEder(String istenenURL) {
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(istenenURL));
+    }
 }
